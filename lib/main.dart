@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:bloc_pattern/bloc_pattern.dart';
 
 part 'routes/Login.dart';
 
