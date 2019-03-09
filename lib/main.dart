@@ -8,8 +8,13 @@ import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'dart:async';
+import 'package:rxdart/rxdart.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 part 'routes/Login.dart';
+part 'blocs/LoginBloc.dart';
+part 'routes/Main.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,6 +30,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context)=>Login(),
+        '/main':(context)=>Main()
       },
     );
   }
