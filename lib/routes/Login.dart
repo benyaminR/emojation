@@ -24,18 +24,29 @@ class LoginState extends State<Login>{
   Widget _body(){
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           //Logo
-          Text('Emojation',style: TextStyle(fontSize: 32.0,),),
+          Container(
+            margin: EdgeInsets.only(bottom: 100.0),
+            child:Text('Emojation',style: TextStyle(fontSize: 32.0,),),
+          ),
           //LoginButton
           RaisedButton(
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('Google')
+                //icon
+                Container(
+                  child: Icon(MaterialCommunityIcons.google,),
+                  margin: EdgeInsets.only(right: 8.0) ,
+                ),
+                //text
+                Text('Login')
               ],
             ),
             //TODO handel login
-            onPressed: null,
+            onPressed: (){},
           )
         ],
       ),
