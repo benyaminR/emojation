@@ -12,7 +12,6 @@ class Login extends StatelessWidget{
     onAuthStateChanged.
     listen((user)=> user!= null ? Navigator.of(context).pushReplacementNamed('/main'):null);
 
-
     return Scaffold(
         appBar: AppBar(title: Text('Login'),),
         body: Center(
