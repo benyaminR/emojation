@@ -14,7 +14,6 @@ class Main extends StatelessWidget{
 class MainWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    print('build called');
     final bloc = BlocProvider.of<BottomNavBarBloc>(context);
     return StreamBuilder(
       stream: bloc.itemStream,
@@ -22,6 +21,7 @@ class MainWidget extends StatelessWidget{
       builder: (context,index){
         return Scaffold(
           appBar: AppBar(title: Text('main'),),
+          body: _body(index.data),
           bottomNavigationBar: BottomNavigationBar(
               onTap: (index)=>bloc.selectItem(index),
               currentIndex: index.data,
@@ -42,5 +42,16 @@ class MainWidget extends StatelessWidget{
         );
       },
     );
+  }
+  Widget _body(int index){
+    switch(index){
+      case 0 :
+        return Home();
+      case 1 :
+        return Center(child: Text('camera'),);
+      case 2 :
+        return Center(child: Text('statsitics'),);
+    }
+    return Center(child: Text('error'),);
   }
 }

@@ -15,6 +15,8 @@ part 'routes/Login.dart';
 part 'blocs/LoginBloc.dart';
 part 'routes/Main.dart';
 part 'blocs/BottomNavBarBloc.dart';
+part 'routes/Home.dart';
+part 'blocs/HomeBloc.dart';
 
 void main() => runApp(MyApp());
 
