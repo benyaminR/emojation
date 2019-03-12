@@ -21,7 +21,7 @@ class MainWidget extends StatelessWidget{
       builder: (context,index){
         return Scaffold(
           appBar: AppBar(title: Text('main'),),
-          body: _body(index.data),
+          body: _body(index.data,context),
           bottomNavigationBar: BottomNavigationBar(
               onTap: (index)=>bloc.selectItem(index),
               currentIndex: index.data,
@@ -43,15 +43,16 @@ class MainWidget extends StatelessWidget{
       },
     );
   }
-  Widget _body(int index){
+  Widget _body(int index,context){
     switch(index){
       case 0 :
         return Home();
       case 1 :
-        return Center(child: Text('camera'),);
+        return Camera();
       case 2 :
         return Center(child: Text('statsitics'),);
     }
     return Center(child: Text('error'),);
   }
+
 }

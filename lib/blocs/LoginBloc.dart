@@ -24,6 +24,9 @@ class LoginBloc {
         accessToken: _googleAuthentication.accessToken
     );
 
+    var sp = await SharedPreferences.getInstance();
+    sp.setString(USER_ID, _googleAuthentication.idToken);
+
     return _firebaseAuth.signInWithCredential(credential);
   }
 

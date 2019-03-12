@@ -10,6 +10,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'consts.dart';
+import 'package:camera/camera.dart';
+
 
 part 'routes/Login.dart';
 part 'blocs/LoginBloc.dart';
@@ -17,6 +21,8 @@ part 'routes/Main.dart';
 part 'blocs/BottomNavBarBloc.dart';
 part 'routes/Home.dart';
 part 'blocs/HomeBloc.dart';
+part 'routes/Camera.dart';
+part 'blocs/CameraBloc.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,7 +38,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context)=>Login(),
-        '/main':(context)=>Main()
+        '/main':(context)=>Main(),
       },
     );
   }

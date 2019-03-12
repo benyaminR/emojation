@@ -13,22 +13,28 @@ class Home extends StatelessWidget{
 class HomeUI extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    //access to HomeBloc
     final bloc = BlocProvider.of<HomeBloc>(context);
 
-    return StreamBuilder(
-      stream: bloc.moodStream,
-      builder: (context,moods){
+    return StreamBuilder<QuerySnapshot>(
+      stream: bloc.moodStream,//stream of moods
+      builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> moods){
+        //show a progressIndicator
         if(moods.connectionState == ConnectionState.waiting)
           return Center(child: CircularProgressIndicator());
+        //error
         if(moods.data == null)
-          return Center(child: Text('error'),);
+          return Center(child: Text('add'),);
+        //show moods
         return ListView.builder(
-            itemCount: moods.data.length,
+            itemCount:moods.data.documents.length,
             itemBuilder: (context,index){
               return ListTile(
-                title: Text(moods.data[index]),
+                title: Text(moods.data.documents[index]['emoji']),
+                subtitle: Text(moods.data.documents[index]['date']),
               );
-            });
+            }
+        );
       },
     );
   }

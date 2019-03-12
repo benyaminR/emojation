@@ -1,14 +1,23 @@
 part of emojation;
 
 class HomeBloc extends BlocBase{
-  StreamController<dynamic> _moodStreamController = StreamController<dynamic>();
-  Stream<dynamic> get moodStream => _moodStreamController.stream;
+  StreamController<QuerySnapshot> _moodStreamController = StreamController<QuerySnapshot>();
+  Stream<QuerySnapshot> get moodStream => _moodStreamController.stream;
 
 
   HomeBloc(){
-    _moodStreamController.sink.add(List.generate(100, (index)=>'$index'));
-  }
+    SharedPreferences.getInstance().then((sp){
+      var id = sp.get(USER_ID);
+      Firestore
+          .instance
+          .collection('users')
+          .document(id)
+          .collection('moods')
+          .getDocuments()
+          .then((snapshot)=>_moodStreamController.sink.add(snapshot));
+    });
 
+  }
 
   @override
   void dispose() {
