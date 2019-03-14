@@ -13,7 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'consts.dart';
 import 'package:camera/camera.dart';
-
+import 'package:path_provider/path_provider.dart';
 
 part 'routes/Login.dart';
 part 'blocs/LoginBloc.dart';
@@ -23,6 +23,9 @@ part 'routes/Home.dart';
 part 'blocs/HomeBloc.dart';
 part 'routes/Camera.dart';
 part 'blocs/CameraBloc.dart';
+part 'utils/emojiUtil.dart';
+part 'routes/Edit.dart';
+part 'blocs/EditBloc.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(context)=>Login(),
         '/main':(context)=>Main(),
+        '/main/edit':(context)=>Edit()
       },
     );
   }
