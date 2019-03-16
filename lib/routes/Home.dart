@@ -29,15 +29,25 @@ class HomeUI extends StatelessWidget{
         return ListView.builder(
             itemCount:moods.data.documents.length,
             itemBuilder: (context,index){
-              return ListTile(
-                leading: Icon(IconData(
-                    moods.data.documents[index]['mood'],
-                    fontFamily: "MaterialCommunityIcons",
-                    fontPackage: "flutter_vector_icons")
-                    ,size: 50.0,
+              return Dismissible(
+                key: Key('$index'),
+                onDismissed: (dir){
+                  bloc.delete(moods.data.documents[index]['added'].toString());
+                },
+                background: Container(
+                  color: Colors.redAccent,
+                  child: Icon(MaterialCommunityIcons.check,color: Colors.white,),
                 ),
-                title: Text(moods.data.documents[index]['description'],),
-                subtitle: Text(convertDate(moods.data.documents[index]['added'])),
+                child: ListTile(
+                  leading: Icon(IconData(
+                      moods.data.documents[index]['mood'],
+                      fontFamily: "MaterialCommunityIcons",
+                      fontPackage: "flutter_vector_icons")
+                    ,size: 50.0,
+                  ),
+                  title: Text(moods.data.documents[index]['description'],),
+                  subtitle: Text(convertDate(moods.data.documents[index]['added'])),
+                ),
               );
             }
         );
