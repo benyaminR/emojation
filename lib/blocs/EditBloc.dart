@@ -11,7 +11,10 @@ class EditBloc extends BlocBase{
         .collection('users')
         .document(id)
         .collection('moods')
-        .add({'mood':emoji.codePoint,'description':description,'added':DateTime.now().millisecondsSinceEpoch});
+        .add({
+      'mood':emoji.codePoint,
+      'description':description,
+      'added':DateTime.now().millisecondsSinceEpoch});
   }
   
   

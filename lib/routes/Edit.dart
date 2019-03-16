@@ -49,7 +49,7 @@ class EditUI extends StatelessWidget{
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()=> bloc.add(emoji, textEditingController.value.text),
+        onPressed: ()=> bloc.add(emoji, textEditingController.value.text).then((_)=>Navigator.pop(context)),
         child: Icon(MaterialCommunityIcons.check),
       ),
     );

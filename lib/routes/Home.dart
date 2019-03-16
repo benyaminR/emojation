@@ -30,8 +30,14 @@ class HomeUI extends StatelessWidget{
             itemCount:moods.data.documents.length,
             itemBuilder: (context,index){
               return ListTile(
-                title: Text(moods.data.documents[index]['emoji']),
-                subtitle: Text(moods.data.documents[index]['date']),
+                leading: Icon(IconData(
+                    moods.data.documents[index]['mood'],
+                    fontFamily: "MaterialCommunityIcons",
+                    fontPackage: "flutter_vector_icons")
+                    ,size: 50.0,
+                ),
+                title: Text(moods.data.documents[index]['description'],),
+                subtitle: Text(convertDate(moods.data.documents[index]['added'])),
               );
             }
         );

@@ -14,6 +14,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'consts.dart';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
+import 'utils/timeConverter.dart';
+
 
 part 'routes/Login.dart';
 part 'blocs/LoginBloc.dart';

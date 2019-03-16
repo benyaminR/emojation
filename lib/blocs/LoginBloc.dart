@@ -5,7 +5,6 @@ class LoginBloc {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = new GoogleSignIn();
 
-  //TODO handel login
   Future<FirebaseUser> loginWithGoogle(data)async{
     GoogleSignInAccount currentUser = _googleSignIn.currentUser;
     if(currentUser == null){
@@ -24,10 +23,12 @@ class LoginBloc {
         accessToken: _googleAuthentication.accessToken
     );
 
-    var sp = await SharedPreferences.getInstance();
-    sp.setString(USER_ID, _googleAuthentication.idToken);
+    var firebaseUser = await _firebaseAuth.signInWithCredential(credential);
 
-    return _firebaseAuth.signInWithCredential(credential);
+    var sp = await SharedPreferences.getInstance();
+    sp.setString(USER_ID, firebaseUser.uid);
+
+    return firebaseUser;
   }
 
 }
