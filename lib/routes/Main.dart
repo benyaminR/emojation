@@ -20,8 +20,8 @@ class MainWidget extends StatelessWidget{
       initialData: 0,
       builder: (context,index){
         return Scaffold(
-          appBar: AppBar(title: Text('main'),),
-          body: _body(index.data,context),
+          appBar: index.data == 1?null:AppBar(title: Text('main'),),
+          body: _body(index.data,context,bloc),
           bottomNavigationBar: BottomNavigationBar(
               onTap: (index)=>bloc.selectItem(index),
               currentIndex: index.data,
@@ -43,7 +43,7 @@ class MainWidget extends StatelessWidget{
       },
     );
   }
-  Widget _body(int index,context){
+  Widget _body(int index,context,bloc){
     switch(index){
       case 0 :
         return Home();
